@@ -1,22 +1,29 @@
+[CmdletBinding()]
+PARAM
+(
+	$PathToCursors = "%USERPROFILE%\Downloads\Lefty\Green"
+)
+
+
 $RegConnect = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]"CurrentUser", "$env:COMPUTERNAME")
 $RegCursors = $RegConnect.OpenSubKey("Control Panel\Cursors", $true)
 $RegCursors.SetValue("", "GreenLefty")
-$RegCursors.SetValue("AppStarting", "%USERPROFILE%\Downloads\Lefty\Green\Green-Working-Left.ani")
-$RegCursors.SetValue("Arrow", "%USERPROFILE%\Downloads\Lefty\Green\Green-Left.cur")
-$RegCursors.SetValue("Crosshair", "%USERPROFILE%\Downloads\Lefty\Green\GreenStone - Precision.ani")
-$RegCursors.SetValue("Hand", "%USERPROFILE%\Downloads\Lefty\Green\GreenStoneLeft - Link.cur")
-$RegCursors.SetValue("Help", "%USERPROFILE%\Downloads\Lefty\Green\Green-Question-Left.cur")
-$RegCursors.SetValue("IBeam", "%USERPROFILE%\Downloads\Lefty\Green\GreenStone - Text.ani")
+$RegCursors.SetValue("AppStarting", "$PathToCursors\Green-Working-Left.ani")
+$RegCursors.SetValue("Arrow", "$PathToCursors\Green-Left.cur")
+$RegCursors.SetValue("Crosshair", "$PathToCursors\GreenStone - Precision.ani")
+$RegCursors.SetValue("Hand", "$PathToCursors\GreenStoneLeft - Link.cur")
+$RegCursors.SetValue("Help", "$PathToCursors\Green-Question-Left.cur")
+$RegCursors.SetValue("IBeam", "$PathToCursors\GreenStone - Text.ani")
 $RegCursors.SetValue("No", "")
-$RegCursors.SetValue("NWPen", "%USERPROFILE%\Downloads\Lefty\Green\Green-Handwriting.cur")
+$RegCursors.SetValue("NWPen", "$PathToCursors\Green-Handwriting.cur")
 $RegCursors.SetValue("Scheme Source", 0, 'DWord')
-$RegCursors.SetValue("SizeAll", "%USERPROFILE%\Downloads\Lefty\Green\GreenStone - Move.ani")
-$RegCursors.SetValue("SizeNESW", "%USERPROFILE%\Downloads\Lefty\Green\Green-Resize 2.cur")
-$RegCursors.SetValue("SizeNS", "%USERPROFILE%\Downloads\Lefty\Green\Green-Vertical Resize.cur")
-$RegCursors.SetValue("SizeNWSE", "%USERPROFILE%\Downloads\Lefty\Green\Green-Resize 1.cur")
-$RegCursors.SetValue("SizeWE", "%USERPROFILE%\Downloads\Lefty\Green\Green-Horizontal Resize.cur")
-$RegCursors.SetValue("UpArrow", "%USERPROFILE%\Downloads\Lefty\Green\Green-Alternate.cur")
-$RegCursors.SetValue("Wait", "%USERPROFILE%\Downloads\Lefty\Green\Green-Busy.ani")
+$RegCursors.SetValue("SizeAll", "$PathToCursors\GreenStone - Move.ani")
+$RegCursors.SetValue("SizeNESW", "$PathToCursors\Green-Resize 2.cur")
+$RegCursors.SetValue("SizeNS", "$PathToCursors\Green-Vertical Resize.cur")
+$RegCursors.SetValue("SizeNWSE", "$PathToCursors\Green-Resize 1.cur")
+$RegCursors.SetValue("SizeWE", "$PathToCursors\Green-Horizontal Resize.cur")
+$RegCursors.SetValue("UpArrow", "$PathToCursors\Green-Alternate.cur")
+$RegCursors.SetValue("Wait", "$PathToCursors\Green-Busy.ani")
 $RegCursors.Close()
 $RegConnect.Close()
 
