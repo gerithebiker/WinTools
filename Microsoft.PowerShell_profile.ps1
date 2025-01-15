@@ -125,7 +125,7 @@ $intersection = [char]0x253C # ┼
 # Detect if a profile file is being sourced in
 $sourceFile = ""
 foreach ($line in Get-Content $PROFILE) {
-	if ($line -match '\. "(?<Path>[^"]+rofile\.ps1)"') {
+	if ($line -match '^\.[ ]+"(?<Path>[^"]+rofile\.ps1)"') {
         $sourceFile = $matches['Path']
 		$sourceFile = $sourceFile.replace('$env:USERPROFILE',$env:USERPROFILE)
         break
