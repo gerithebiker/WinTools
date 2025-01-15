@@ -38,4 +38,5 @@ public static extern bool SystemParametersInfo(
 '@
 
 $CursorRefresh = Add-Type -MemberDefinition $CSharpSig -Name WinAPICall -Namespace SystemParamInfo -PassThru
+$CursorRefresh
 $CursorRefresh::SystemParametersInfo(0x0057, 0, $null, 0)
