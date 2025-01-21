@@ -1,3 +1,9 @@
+# If you have multiple PowerShell versions on your system, and you want to use the same profile, 
+#	then save this file in one, and add the following line to the other environment's profile:
+#	. "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+#	Of course you have to update the path according to your system, but the format has to be the same,
+#	the path has to have the ". $env:USERPROFILE" string in it.
+
 function New-MyItem {
     param(
         [string]$Path
