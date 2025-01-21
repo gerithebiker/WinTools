@@ -16,6 +16,10 @@ function New-MyItem {
     }
 }
 
+function Get-Uptime{
+    Get-CimInstance -ClassName Win32_OperatingSystem | Select LastBootUpTime
+}
+
 # First we define a few functions
 function Get-EnvVars {
     Get-ChildItem env: | Sort-Object Name
@@ -91,7 +95,7 @@ Set-Alias -Name getEnv -Value Get-EnvVars
 Set-Alias -Name touch -Value New-MyItem
 Set-Alias -Name history -Value Get-PersistentHistory
 Set-Alias -Name histt -Value Format-MyHistory
-Set-Alias -name 'cpl' -value ("$env:USERPROFILE\Documents\GitHub\MusicTools\Add-PlayLists.ps1")
+Set-Alias -name uptime -value Get-Uptime
 Set-Alias -Name 'npp' -Value ("$env:PROGRAMFILES\Notepad++\notepad++.exe")
 Set-Alias -Name : -Value Invoke-PersistentHistoryCommand
 
