@@ -32,28 +32,20 @@ function Get-Uptime {
     $hours = $uptime.Hours
     $minutes = $uptime.Minutes
 
-    # Check PowerShell version
-    if ($PSVersionTable.PSVersion.Major -ge 7) {
-		# Now we colorize the output
-		$colorDate = "`e[31m$formattedDate`e[0m"  # Cyan
-		$colorDays = "`e[31m$days`e[0m"           # Bold Green
-		$colorHours = "`e[31m$hours`e[0m"         # Bold Yellow
-		$colorMinutes = "`e[31m$minutes`e[0m"     # Bold Blue
+    # ANSI Escape sequences compatible with both PowerShell 5 and 7
+    $esc = [char]27
+    $colorCyan = "$esc[36m"
+    $colorGreen = "$esc[32m"
+    $colorYellow = "$esc[33m"
+    $colorBlue = "$esc[34m"
+    $colorRed = "$esc[31m"
+    $colorReset = "$esc[0m"
 
-		Write-Host "`n`e[32mLast Boot Time: `e[0m" -NoNewline
-		Write-Host "$colorDate"
-
-		Write-Host "`e[32mUptime        : `e[0m" -NoNewline
-		Write-Host "$colorDays days, $colorHours hours, $colorMinutes minutes`n"
-    }
-    else {
-        # Plain text for PowerShell version lower than 7
-        Write-Host "`nLast Boot Time: $formattedDate"
-        Write-Host "Uptime        : $days days, $hours hours, $minutes minutes`n"
-    }
+    Write-Host "`n${colorGreen}Last Boot Time : " -NoNewline
+    Write-Host "$colorRed$formattedDate$colorReset"
+    Write-Host "${colorGreen}Uptime         : " -NoNewline
+    Write-Host "$colorRed$days$colorReset days, $colorRed$hours$colorReset hours, $colorRed$minutes$colorReset minutes`n"
 }
-
-
 
 # First we define a few functions
 function Get-EnvVars {
@@ -63,7 +55,7 @@ function Get-EnvVars {
 #   "`e[48;2;255;64;64m`e[38;2;0;0;0mPS `e[4m$($executionContext.SessionState.Path.CurrentLocation)`e[24m$('>' * ($nestedPromptLevel + 1))`e[0m "
 #}
 function prompt {
-                "$([char]27)[36m$([Environment]::UserName)$([char]27)[36m" + "@" + "$([char]27) $((Get-ChildItem  Env:Computername).Value)$([char]27)[0m" + "$([char]27)[33m " + "$((Get-Location).Path)" + "$([char]27)[0m`r`n$ "
+    "$([char]27)[36m$([Environment]::UserName)$([char]27)[36m" + "@" + "$([char]27) $((Get-ChildItem  Env:Computername).Value)$([char]27)[0m" + "$([char]27)[33m " + "$((Get-Location).Path)" + "$([char]27)[0m`r`n$ "
 }
 
 $HistoryFile = "$env:USERPROFILE\Documents\PowerShell_History.log"
@@ -100,7 +92,7 @@ function Get-PersistentHistory {
 }
 
 function Format-MyHistory {
-                Get-PersistentHistory | Format-Table -Wrap -AutoSize
+    Get-PersistentHistory | Format-Table -Wrap -AutoSize
 }
 
 function Invoke-PersistentHistoryCommand {
@@ -115,7 +107,7 @@ function Invoke-PersistentHistoryCommand {
     # Retrieve and execute the command
     if ($CommandNumber -le $commands.Length -and $CommandNumber -gt 0) {
         $command = $commands[$CommandNumber - 1]
-		Write-Host "Re-executing Persistent Command #${CommandNumber}: $command" -ForegroundColor Yellow
+	Write-Host "Re-executing Persistent Command #${CommandNumber}: $command" -ForegroundColor Yellow
         Invoke-Expression $command
     } else {
         Write-Host "Command #$CommandNumber not found in persistent history." -ForegroundColor Red
@@ -168,7 +160,7 @@ $sourceFile = ""
 foreach ($line in Get-Content $PROFILE) {
 	if ($line -match '^\.[ ]+"(?<Path>[^"]+rofile\.ps1)"') {
         $sourceFile = $matches['Path']
-		$sourceFile = $sourceFile.replace('$env:USERPROFILE',$env:USERPROFILE)
+	$sourceFile = $sourceFile.replace('$env:USERPROFILE',$env:USERPROFILE)
         break
     }
 }
@@ -194,7 +186,7 @@ foreach ($name in $aliasNames) {
     if ($alias) {
         $aliases += $alias
     } else {
-		# This is a super roboust error handling
+	# This is a super roboust error handling
         Write-Host "Alias '$name' could not be found." -ForegroundColor Red
     }
 }
