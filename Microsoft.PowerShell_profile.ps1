@@ -16,6 +16,39 @@ function New-MyItem {
     }
 }
 
+function Get-Uptime {
+    $os = Get-CimInstance -ClassName Win32_OperatingSystem
+    $lastBoot = $os.LastBootUpTime
+    $formattedDate = $lastBoot.ToString("yyyy. MM. dd HH:mm:ss")
+    $uptime = (Get-Date) - $lastBoot
+
+    $days = $uptime.Days
+    $hours = $uptime.Hours
+    $minutes = $uptime.Minutes
+
+    # Check PowerShell version
+    if ($PSVersionTable.PSVersion.Major -ge 7) {
+		# Now we colorize the output
+		$colorDate = "`e[31m$formattedDate`e[0m"  # Cyan
+		$colorDays = "`e[31m$days`e[0m"           # Bold Green
+		$colorHours = "`e[31m$hours`e[0m"         # Bold Yellow
+		$colorMinutes = "`e[31m$minutes`e[0m"     # Bold Blue
+
+		Write-Host "`n`e[32mLast Boot Time: `e[0m" -NoNewline
+		Write-Host "$colorDate"
+
+		Write-Host "`e[32mUptime        : `e[0m" -NoNewline
+		Write-Host "$colorDays days, $colorHours hours, $colorMinutes minutes`n"
+    }
+    else {
+        # Plain text for PowerShell version lower than 7
+        Write-Host "`nLast Boot Time: $formattedDate"
+        Write-Host "Uptime        : $days days, $hours hours, $minutes minutes`n"
+    }
+}
+
+
+
 # First we define a few functions
 function Get-EnvVars {
     Get-ChildItem env: | Sort-Object Name
@@ -85,6 +118,7 @@ function Invoke-PersistentHistoryCommand {
 
 # Removing history alias so it can be set to my needs
 Remove-Item alias:history
+#Remove-Item alias:uptime
 
 # Alias section
 Set-Alias -Name getEnv -Value Get-EnvVars
@@ -93,6 +127,7 @@ Set-Alias -Name history -Value Get-PersistentHistory
 Set-Alias -Name histt -Value Format-MyHistory
 Set-Alias -name 'cpl' -value ("$env:USERPROFILE\Documents\GitHub\MusicTools\Add-PlayLists.ps1")
 Set-Alias -Name 'npp' -Value ("$env:PROGRAMFILES\Notepad++\notepad++.exe")
+Set-Alias -name uptime -value Get-Uptime
 Set-Alias -Name : -Value Invoke-PersistentHistoryCommand
 
 # Ensure proper encoding
