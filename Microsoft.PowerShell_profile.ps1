@@ -1,3 +1,9 @@
+# If you have multiple PowerShell versions on your system, and you want to use the same profile, 
+#	then save this file in one, and add the following line to the other environment's profile:
+#	. "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+#	Of course you have to update the path according to your system, but the format has to be the same,
+#	the path has to have the ". $env:USERPROFILE" string in it.
+
 function New-MyItem {
     param(
         [string]$Path
@@ -125,7 +131,7 @@ Set-Alias -Name getEnv -Value Get-EnvVars
 Set-Alias -Name touch -Value New-MyItem
 Set-Alias -Name history -Value Get-PersistentHistory
 Set-Alias -Name histt -Value Format-MyHistory
-Set-Alias -name 'cpl' -value ("$env:USERPROFILE\Documents\GitHub\MusicTools\Add-PlayLists.ps1")
+Set-Alias -name uptime -value Get-Uptime
 Set-Alias -Name 'npp' -Value ("$env:PROGRAMFILES\Notepad++\notepad++.exe")
 Set-Alias -name uptime -value Get-Uptime
 Set-Alias -Name : -Value Invoke-PersistentHistoryCommand
@@ -160,7 +166,7 @@ $intersection = [char]0x253C # ┼
 # Detect if a profile file is being sourced in
 $sourceFile = ""
 foreach ($line in Get-Content $PROFILE) {
-	if ($line -match '\. "(?<Path>[^"]+rofile\.ps1)"') {
+	if ($line -match '^\.[ ]+"(?<Path>[^"]+rofile\.ps1)"') {
         $sourceFile = $matches['Path']
 		$sourceFile = $sourceFile.replace('$env:USERPROFILE',$env:USERPROFILE)
         break
