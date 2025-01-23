@@ -56,20 +56,6 @@ function Get-Uptime {
     Write-Host "${colorGreen}Uptime         : " -NoNewline
     Write-Host "$colorRed$days$colorReset days, $colorRed$hours$colorReset hours, $colorRed$minutes$colorReset minutes`n"
 }
-    # ANSI Escape sequences compatible with both PowerShell 5 and 7
-    $esc = [char]27
-    $colorCyan = "$esc[36m"
-    $colorGreen = "$esc[32m"
-    $colorYellow = "$esc[33m"
-    $colorBlue = "$esc[34m"
-    $colorRed = "$esc[31m"
-    $colorReset = "$esc[0m"
-
-    Write-Host "`n${colorGreen}Last Boot Time : " -NoNewline
-    Write-Host "$colorRed$formattedDate$colorReset"
-    Write-Host "${colorGreen}Uptime         : " -NoNewline
-    Write-Host "$colorRed$days$colorReset days, $colorRed$hours$colorReset hours, $colorRed$minutes$colorReset minutes`n"
-}
 
 # First we define a few functions
 function Get-EnvVars {
@@ -79,7 +65,6 @@ function Get-EnvVars {
 #   "`e[48;2;255;64;64m`e[38;2;0;0;0mPS `e[4m$($executionContext.SessionState.Path.CurrentLocation)`e[24m$('>' * ($nestedPromptLevel + 1))`e[0m "
 #}
 function prompt {
-    "$([char]27)[36m$([Environment]::UserName)$([char]27)[36m" + "@" + "$([char]27) $((Get-ChildItem  Env:Computername).Value)$([char]27)[0m" + "$([char]27)[33m " + "$((Get-Location).Path)" + "$([char]27)[0m`r`n$ "
     "$([char]27)[36m$([Environment]::UserName)$([char]27)[36m" + "@" + "$([char]27) $((Get-ChildItem  Env:Computername).Value)$([char]27)[0m" + "$([char]27)[33m " + "$((Get-Location).Path)" + "$([char]27)[0m`r`n$ "
 }
 
@@ -118,7 +103,6 @@ function Get-PersistentHistory {
 
 function Format-MyHistory {
     Get-PersistentHistory | Format-Table -Wrap -AutoSize
-    Get-PersistentHistory | Format-Table -Wrap -AutoSize
 }
 
 function Invoke-PersistentHistoryCommand {
@@ -133,7 +117,6 @@ function Invoke-PersistentHistoryCommand {
     # Retrieve and execute the command
     if ($CommandNumber -le $commands.Length -and $CommandNumber -gt 0) {
         $command = $commands[$CommandNumber - 1]
-	Write-Host "Re-executing Persistent Command #${CommandNumber}: $command" -ForegroundColor Yellow
 	Write-Host "Re-executing Persistent Command #${CommandNumber}: $command" -ForegroundColor Yellow
         Invoke-Expression $command
     } else {
@@ -188,7 +171,6 @@ foreach ($line in Get-Content $PROFILE) {
 	if ($line -match '^[\s]+\.[ ]+"(?<Path>[^"]+rofile\.ps1)"') {
         $sourceFile = $matches['Path']
 		$sourceFile = $sourceFile.replace('$env:USERPROFILE',$env:USERPROFILE)
-		write-host "alma"
         break
     }
 }
@@ -197,7 +179,6 @@ foreach ($line in Get-Content $PROFILE) {
 # 	current profile should contain the aliases, fallback to the current profile
 if (-not $sourceFile) {
     $sourceFile = $PROFILE
-	write-host "korte"
 }
 write-host $sourceFile
 # Extract alias names from the profile
@@ -216,7 +197,6 @@ foreach ($name in $aliasNames) {
         $aliases += $alias
     } else {
 	# This is a super roboust error handling
-	# This is a super roboust error handling
         Write-Host "Alias '$name' could not be found." -ForegroundColor Red
     }
 }
@@ -228,7 +208,7 @@ if($maxNameLength -lt 4){$maxNameLength = 4}
 if($maxDefLength -lt 10){$maxDefLength = 10}
 
 # Helper function to repeat a character
-function Repeat-Char {
+function Set-RepeatChar {
     param (
         [Parameter(Mandatory = $true)]
         [char]$Char,
@@ -239,14 +219,14 @@ function Repeat-Char {
 }
 
 # Print the top border
-Write-Output ("  $topLeft" + (Repeat-Char -Char $horizontal -Count ($maxNameLength + 2)) + "$middleTop" + (Repeat-Char -Char $horizontal -Count ($maxDefLength + 2)) + "$topRight")
+Write-Output ("  $topLeft" + (Set-RepeatChar -Char $horizontal -Count ($maxNameLength + 2)) + "$middleTop" + (Set-RepeatChar -Char $horizontal -Count ($maxDefLength + 2)) + "$topRight")
 
 # Print the header
 $header = "  $vertical {0,-$($maxNameLength)} $vertical {1,-$($maxDefLength)} $vertical" -f "Name", "Definition"
 Write-Output $header
 
 # Print the separator line
-Write-Output ("  $middleLeft" + (Repeat-Char -Char $horizontal -Count ($maxNameLength + 2)) + "$intersection" + (Repeat-Char -Char $horizontal -Count ($maxDefLength + 2)) + "$middleRight")
+Write-Output ("  $middleLeft" + (Set-RepeatChar -Char $horizontal -Count ($maxNameLength + 2)) + "$intersection" + (Set-RepeatChar -Char $horizontal -Count ($maxDefLength + 2)) + "$middleRight")
 
 # Print each alias entry
 $aliases | ForEach-Object {
@@ -254,6 +234,6 @@ $aliases | ForEach-Object {
 }
 
 # Print the bottom border
-Write-Output ("  $bottomLeft" + (Repeat-Char -Char $horizontal -Count ($maxNameLength + 2)) + "$middleBottom" + (Repeat-Char -Char $horizontal -Count ($maxDefLength + 2)) + "$bottomRight")
+Write-Output ("  $bottomLeft" + (Set-RepeatChar -Char $horizontal -Count ($maxNameLength + 2)) + "$middleBottom" + (Set-RepeatChar -Char $horizontal -Count ($maxDefLength + 2)) + "$bottomRight")
 
 Write-Output "To properly use the : as a replacement for the Unix ! to retrieve a command from history, you have to put a space after the colon like this: `n$ : 23`nand it will run the 23rd command again."
