@@ -56,6 +56,20 @@ function Get-Uptime {
     Write-Host "${colorGreen}Uptime         : " -NoNewline
     Write-Host "$colorRed$days$colorReset days, $colorRed$hours$colorReset hours, $colorRed$minutes$colorReset minutes`n"
 }
+    # ANSI Escape sequences compatible with both PowerShell 5 and 7
+    $esc = [char]27
+    $colorCyan = "$esc[36m"
+    $colorGreen = "$esc[32m"
+    $colorYellow = "$esc[33m"
+    $colorBlue = "$esc[34m"
+    $colorRed = "$esc[31m"
+    $colorReset = "$esc[0m"
+
+    Write-Host "`n${colorGreen}Last Boot Time : " -NoNewline
+    Write-Host "$colorRed$formattedDate$colorReset"
+    Write-Host "${colorGreen}Uptime         : " -NoNewline
+    Write-Host "$colorRed$days$colorReset days, $colorRed$hours$colorReset hours, $colorRed$minutes$colorReset minutes`n"
+}
 
 # First we define a few functions
 function Get-EnvVars {
@@ -65,6 +79,7 @@ function Get-EnvVars {
 #   "`e[48;2;255;64;64m`e[38;2;0;0;0mPS `e[4m$($executionContext.SessionState.Path.CurrentLocation)`e[24m$('>' * ($nestedPromptLevel + 1))`e[0m "
 #}
 function prompt {
+    "$([char]27)[36m$([Environment]::UserName)$([char]27)[36m" + "@" + "$([char]27) $((Get-ChildItem  Env:Computername).Value)$([char]27)[0m" + "$([char]27)[33m " + "$((Get-Location).Path)" + "$([char]27)[0m`r`n$ "
     "$([char]27)[36m$([Environment]::UserName)$([char]27)[36m" + "@" + "$([char]27) $((Get-ChildItem  Env:Computername).Value)$([char]27)[0m" + "$([char]27)[33m " + "$((Get-Location).Path)" + "$([char]27)[0m`r`n$ "
 }
 
@@ -103,6 +118,7 @@ function Get-PersistentHistory {
 
 function Format-MyHistory {
     Get-PersistentHistory | Format-Table -Wrap -AutoSize
+    Get-PersistentHistory | Format-Table -Wrap -AutoSize
 }
 
 function Invoke-PersistentHistoryCommand {
@@ -117,6 +133,7 @@ function Invoke-PersistentHistoryCommand {
     # Retrieve and execute the command
     if ($CommandNumber -le $commands.Length -and $CommandNumber -gt 0) {
         $command = $commands[$CommandNumber - 1]
+	Write-Host "Re-executing Persistent Command #${CommandNumber}: $command" -ForegroundColor Yellow
 	Write-Host "Re-executing Persistent Command #${CommandNumber}: $command" -ForegroundColor Yellow
         Invoke-Expression $command
     } else {
@@ -198,6 +215,7 @@ foreach ($name in $aliasNames) {
     if ($alias) {
         $aliases += $alias
     } else {
+	# This is a super roboust error handling
 	# This is a super roboust error handling
         Write-Host "Alias '$name' could not be found." -ForegroundColor Red
     }
