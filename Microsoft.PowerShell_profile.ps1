@@ -8,17 +8,27 @@ function New-MyItem {
     param(
         [string]$Path
     )
+
+    # Resolve full path
+    $fullPath = if ([System.IO.Path]::IsPathRooted($Path)) {
+        $Path
+    } else {
+        Join-Path -Path (Get-Location) -ChildPath $Path
+    }
+
+    # Extract directory part
+    $directory = Split-Path -Path $fullPath -Parent
+
     # Ensure the directory exists
-    $directory = Split-Path -Path $Path -Parent
     if (-Not (Test-Path $directory)) {
         New-Item -ItemType Directory -Path $directory -Force | Out-Null
     }
-    
-    # Create or update the file
-    if (-Not (Test-Path $Path)) {
-        New-Item -ItemType File -Path $Path -Force | Out-Null
+
+    # Create or update the file timestamp
+    if (-Not (Test-Path $fullPath)) {
+        New-Item -ItemType File -Path $fullPath -Force | Out-Null
     } else {
-        (Get-Item $Path).LastWriteTime = Get-Date
+        (Get-Item $fullPath).LastWriteTime = Get-Date
     }
 }
 
@@ -32,28 +42,20 @@ function Get-Uptime {
     $hours = $uptime.Hours
     $minutes = $uptime.Minutes
 
-    # Check PowerShell version
-    if ($PSVersionTable.PSVersion.Major -ge 7) {
-		# Now we colorize the output
-		$colorDate = "`e[31m$formattedDate`e[0m"  # Cyan
-		$colorDays = "`e[31m$days`e[0m"           # Bold Green
-		$colorHours = "`e[31m$hours`e[0m"         # Bold Yellow
-		$colorMinutes = "`e[31m$minutes`e[0m"     # Bold Blue
+    # ANSI Escape sequences compatible with both PowerShell 5 and 7
+    $esc = [char]27
+    $colorCyan = "$esc[36m"
+    $colorGreen = "$esc[32m"
+    $colorYellow = "$esc[33m"
+    $colorBlue = "$esc[34m"
+    $colorRed = "$esc[31m"
+    $colorReset = "$esc[0m"
 
-		Write-Host "`n`e[32mLast Boot Time: `e[0m" -NoNewline
-		Write-Host "$colorDate"
-
-		Write-Host "`e[32mUptime        : `e[0m" -NoNewline
-		Write-Host "$colorDays days, $colorHours hours, $colorMinutes minutes`n"
-    }
-    else {
-        # Plain text for PowerShell version lower than 7
-        Write-Host "`nLast Boot Time: $formattedDate"
-        Write-Host "Uptime        : $days days, $hours hours, $minutes minutes`n"
-    }
+    Write-Host "`n${colorGreen}Last Boot Time : " -NoNewline
+    Write-Host "$colorRed$formattedDate$colorReset"
+    Write-Host "${colorGreen}Uptime         : " -NoNewline
+    Write-Host "$colorRed$days$colorReset days, $colorRed$hours$colorReset hours, $colorRed$minutes$colorReset minutes`n"
 }
-
-
 
 # First we define a few functions
 function Get-EnvVars {
@@ -63,7 +65,7 @@ function Get-EnvVars {
 #   "`e[48;2;255;64;64m`e[38;2;0;0;0mPS `e[4m$($executionContext.SessionState.Path.CurrentLocation)`e[24m$('>' * ($nestedPromptLevel + 1))`e[0m "
 #}
 function prompt {
-                "$([char]27)[36m$([Environment]::UserName)$([char]27)[36m" + "@" + "$([char]27) $((Get-ChildItem  Env:Computername).Value)$([char]27)[0m" + "$([char]27)[33m " + "$((Get-Location).Path)" + "$([char]27)[0m`r`n$ "
+    "$([char]27)[36m$([Environment]::UserName)$([char]27)[36m" + "@" + "$([char]27) $((Get-ChildItem  Env:Computername).Value)$([char]27)[0m" + "$([char]27)[33m " + "$((Get-Location).Path)" + "$([char]27)[0m`r`n$ "
 }
 
 $HistoryFile = "$env:USERPROFILE\Documents\PowerShell_History.log"
@@ -100,7 +102,7 @@ function Get-PersistentHistory {
 }
 
 function Format-MyHistory {
-                Get-PersistentHistory | Format-Table -Wrap -AutoSize
+    Get-PersistentHistory | Format-Table -Wrap -AutoSize
 }
 
 function Invoke-PersistentHistoryCommand {
@@ -115,7 +117,7 @@ function Invoke-PersistentHistoryCommand {
     # Retrieve and execute the command
     if ($CommandNumber -le $commands.Length -and $CommandNumber -gt 0) {
         $command = $commands[$CommandNumber - 1]
-		Write-Host "Re-executing Persistent Command #${CommandNumber}: $command" -ForegroundColor Yellow
+	Write-Host "Re-executing Persistent Command #${CommandNumber}: $command" -ForegroundColor Yellow
         Invoke-Expression $command
     } else {
         Write-Host "Command #$CommandNumber not found in persistent history." -ForegroundColor Red
@@ -133,7 +135,7 @@ Set-Alias -Name history -Value Get-PersistentHistory
 Set-Alias -Name histt -Value Format-MyHistory
 Set-Alias -name uptime -value Get-Uptime
 Set-Alias -Name 'npp' -Value ("$env:PROGRAMFILES\Notepad++\notepad++.exe")
-Set-Alias -name uptime -value Get-Uptime
+Set-Alias -name 'cpl' -value ("$env:USERPROFILE\Documents\GitHub\MusicTools\Add-PlayLists.ps1")
 Set-Alias -Name : -Value Invoke-PersistentHistoryCommand
 
 # Ensure proper encoding
@@ -166,9 +168,10 @@ $intersection = [char]0x253C # ┼
 # Detect if a profile file is being sourced in
 $sourceFile = ""
 foreach ($line in Get-Content $PROFILE) {
-	if ($line -match '^\.[ ]+"(?<Path>[^"]+rofile\.ps1)"') {
+	if ($line -match '^[\s]+\.[ ]+"(?<Path>[^"]+rofile\.ps1)"') {
         $sourceFile = $matches['Path']
 		$sourceFile = $sourceFile.replace('$env:USERPROFILE',$env:USERPROFILE)
+		write-host "alma"
         break
     }
 }
@@ -177,8 +180,9 @@ foreach ($line in Get-Content $PROFILE) {
 # 	current profile should contain the aliases, fallback to the current profile
 if (-not $sourceFile) {
     $sourceFile = $PROFILE
+	write-host "korte"
 }
-
+write-host $sourceFile
 # Extract alias names from the profile
 $aliasNames = @()
 foreach ($line in Get-Content $sourceFile) {
@@ -186,7 +190,7 @@ foreach ($line in Get-Content $sourceFile) {
         $aliasNames += $matches[1]
     }
 }
-
+write-host $aliasNames
 # Retrieve actual alias objects using Get-Alias
 $aliases = @()
 foreach ($name in $aliasNames) {
@@ -194,7 +198,7 @@ foreach ($name in $aliasNames) {
     if ($alias) {
         $aliases += $alias
     } else {
-		# This is a super roboust error handling
+	# This is a super roboust error handling
         Write-Host "Alias '$name' could not be found." -ForegroundColor Red
     }
 }
