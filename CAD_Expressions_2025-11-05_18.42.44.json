@@ -1,0 +1,604 @@
+{
+  "default": [
+    {
+      "expression": "*.444.hu",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "mSMLAZ1du"
+    },
+    {
+      "expression": "*.aetna.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "X50SGz9ri"
+    },
+    {
+      "expression": "*.amazon.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "2Uz5NfQ6Y"
+    },
+    {
+      "expression": "*.americanexpress.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "QYKPL6baVq"
+    },
+    {
+      "expression": "*.atriumhealth.org",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "xhugeh6Zl"
+    },
+    {
+      "expression": "*.ca.rarevinyl.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "IdsAizmt4"
+    },
+    {
+      "expression": "*.chase.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "3joTUpTXz"
+    },
+    {
+      "expression": "*.chatgpt.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "D9kUlpI5h9"
+    },
+    {
+      "expression": "*.citi.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "l5VP3OOsw"
+    },
+    {
+      "expression": "*.civicfcu.org",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "85wrdlV14"
+    },
+    {
+      "expression": "*.dictzone.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "62HvT0XNQ"
+    },
+    {
+      "expression": "*.digital.fidelity.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "8ljn6xYOrr"
+    },
+    {
+      "expression": "*.discogs.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "trKkBTzy8z"
+    },
+    {
+      "expression": "*.fidelity.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "Hde2vfjEo"
+    },
+    {
+      "expression": "*.login.microsoftonline.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "dDovHr7aL"
+    },
+    {
+      "expression": "*.lowes.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "Hc_YR4_Rh"
+    },
+    {
+      "expression": "*.microsoftonline.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "qjw6cGwda"
+    },
+    {
+      "expression": "*.my.atriumhealth.org",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "LUe4G_h5Z"
+    },
+    {
+      "expression": "*.my.civicfcu.org",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "v8Pg3b9NR"
+    },
+    {
+      "expression": "*.ncdot.gov",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "BVnNLcUYp"
+    },
+    {
+      "expression": "*.netflix.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "FgHJ05tYxD"
+    },
+    {
+      "expression": "*.newrez.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "r413pReyU"
+    },
+    {
+      "expression": "*.pacehr.techmahindra.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "bpZJnhOb5"
+    },
+    {
+      "expression": "*.paypams.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "Gk-BvNBvM"
+    },
+    {
+      "expression": "*.peacocktv.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "pAL8chQ53"
+    },
+    {
+      "expression": "*.qobuz.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "maqW0RRiU"
+    },
+    {
+      "expression": "*.rarevinyl.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "aAwI1npgP"
+    },
+    {
+      "expression": "*.secure.chase.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "EsF8gw05t"
+    },
+    {
+      "expression": "*.signin.newrez.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "ftY8biJX0"
+    },
+    {
+      "expression": "*.techmahindra.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "7ot1Cuulg"
+    },
+    {
+      "expression": "192.168.1.131",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "9_VQebbvX"
+    },
+    {
+      "expression": "444.hu",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "Iqz3v2BQL"
+    },
+    {
+      "expression": "aetna.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "Hn0t8WmHv"
+    },
+    {
+      "expression": "amazon.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "_5Vw8bK7I"
+    },
+    {
+      "expression": "americanexpress.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "IzwaW1d1n"
+    },
+    {
+      "expression": "ca.rarevinyl.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "iXx90mtmUE"
+    },
+    {
+      "expression": "chatgpt.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "Fx7kiVxcS"
+    },
+    {
+      "expression": "citi.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "mTuBmsaiN"
+    },
+    {
+      "expression": "dictzone.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "Sqtuq9_qQ"
+    },
+    {
+      "expression": "digital.fidelity.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "BNcfvotDq"
+    },
+    {
+      "expression": "discogs.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "IHAN0dI28"
+    },
+    {
+      "expression": "login.microsoftonline.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "HngWpC4vU"
+    },
+    {
+      "expression": "lowes.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "WLaIbaCww"
+    },
+    {
+      "expression": "my.atriumhealth.org",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "sFHbrfNxxd"
+    },
+    {
+      "expression": "my.civicfcu.org",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "dm1J5iVyza"
+    },
+    {
+      "expression": "netflix.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "r18O3pKc8"
+    },
+    {
+      "expression": "pacehr.techmahindra.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "uv0JvWmSG"
+    },
+    {
+      "expression": "paypams.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "OgV9tjoy5"
+    },
+    {
+      "expression": "peacocktv.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "TGHvRJVyc"
+    },
+    {
+      "expression": "qobuz.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "pYiqzjwgO"
+    },
+    {
+      "expression": "secure.chase.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "wzxBq-71pL"
+    },
+    {
+      "expression": "signin.newrez.com",
+      "listType": "WHITE",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "rJPPhDYzr"
+    },
+    {
+      "expression": "*.acousticsounds.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "0lwlAtxFl"
+    },
+    {
+      "expression": "*.airbnb.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "JUrqC_9Oq"
+    },
+    {
+      "expression": "*.capps.cfirst.io",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "i7PoBZpS0"
+    },
+    {
+      "expression": "*.cfirst.io",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "mRn31KvlY"
+    },
+    {
+      "expression": "*.mymortgage.regionsmortgage.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "eltAQxzRv"
+    },
+    {
+      "expression": "*.osmsinc.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "sogEdkajmc"
+    },
+    {
+      "expression": "*.regions.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "sei_aSP8XS"
+    },
+    {
+      "expression": "*.regionsmortgage.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "Ctbe_-6CB"
+    },
+    {
+      "expression": "*.shopify.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "cx7pPE7Ag"
+    },
+    {
+      "expression": "*.soundliaison.wetransfer.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "8FLyuF4IO"
+    },
+    {
+      "expression": "*.store.acousticsounds.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "e0v1-AYEh"
+    },
+    {
+      "expression": "*.sumtotal.host",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "DAWZQL6Fy"
+    },
+    {
+      "expression": "*.techmahindra.sumtotal.host",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "9xkc0g4a5"
+    },
+    {
+      "expression": "*.wetransfer.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "V9rjNvpem"
+    },
+    {
+      "expression": "airbnb.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "6W-J-Wyqu"
+    },
+    {
+      "expression": "capps.cfirst.io",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "Qcdgf4PnH"
+    },
+    {
+      "expression": "mymortgage.regionsmortgage.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "lRFYMRGTNx"
+    },
+    {
+      "expression": "osmsinc.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "MmSXY7nXx"
+    },
+    {
+      "expression": "regions.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "uiwJqtBCQ"
+    },
+    {
+      "expression": "shopify.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "04aepfoS_"
+    },
+    {
+      "expression": "soundliaison.wetransfer.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "TiD9mxd0o"
+    },
+    {
+      "expression": "store.acousticsounds.com",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "_YrH3dmf3"
+    },
+    {
+      "expression": "techmahindra.sumtotal.host",
+      "listType": "GREY",
+      "storeId": "default",
+      "cleanSiteData": [],
+      "cookieNames": [],
+      "id": "l3j4u0ary"
+    }
+  ]
+}

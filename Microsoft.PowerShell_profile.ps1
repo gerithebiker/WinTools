@@ -135,7 +135,7 @@ Set-Alias -Name history -Value Get-PersistentHistory
 Set-Alias -Name histt -Value Format-MyHistory
 Set-Alias -name uptime -value Get-Uptime
 Set-Alias -Name 'npp' -Value ("$env:PROGRAMFILES\Notepad++\notepad++.exe")
-Set-Alias -name 'cpl' -value ("$env:USERPROFILE\Documents\GitHub\MusicTools\Add-PlayLists.ps1")
+Set-Alias -name 'cpl' -value ("$env:USERPROFILE\Documents\GitHub\MusicLibraryTools\Add-PlayLists.ps1")
 Set-Alias -Name : -Value Invoke-PersistentHistoryCommand
 
 # Ensure proper encoding
